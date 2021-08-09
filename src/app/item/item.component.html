@@ -1,0 +1,27 @@
+<div class="conatiner" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()">
+  <h1>list the most starred Github repos </h1>
+  <ng-container *ngFor="let repo of newList">
+    <div class="item">
+      <div class="item__avatar">
+        <img [src]="repo.owner?.avatar_url" class="" alt="">
+      </div>
+      <div class="item__details">
+        <h2>{{repo.name}}</h2>
+        <p>{{repo.description}}</p>
+        <div>
+          <span class="label">
+            stars: <strong> {{repo.stargazers_count}} K</strong>
+          </span>
+          <span class="label">
+            issues: <strong> {{repo.open_issues}} K</strong>
+          </span>
+          <span class="submitted">
+            submitted 30 days ago by tensorflow
+          </span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<router-outlet></router-outlet>
