@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ItemsModule, ReposModule } from '../models/repos.model';
 import { ReposService } from '../services/repos.service';
 import { map } from "rxjs/operators";
+import { TestServiceService } from '../services/testService.service';
 
 @Component({
   selector: 'app-item',
@@ -15,11 +16,13 @@ export class ItemComponent implements OnInit {
   pageOfItems: Array<any> | any;
   newList: any = [];
   page = 1;
+  message = 'Hello Subject'
 
   constructor(private reposService: ReposService, private _route: ActivatedRoute,
-    private _router: Router) { }
+    private _router: Router, private testServiceService:TestServiceService) { }
 
   ngOnInit() {
+    this.testServiceService.testMethod2(this.message)
     this.repos$ = this.reposService.getAllRepos()
       .pipe(
         map((apiResponse: ItemsModule) => apiResponse.items)
@@ -29,6 +32,12 @@ export class ItemComponent implements OnInit {
       this.newList = data
     })
   }
+
+  // sendMessage(data:any){
+  //   this.testServiceService.testMethod(data.value)
+  // }
+
+
   onScroll() {
     this.reposService.getListRepos(++this.page).subscribe(data => {
       this.newList = [...this.newList, ...data] //this.newList.concat(data) 

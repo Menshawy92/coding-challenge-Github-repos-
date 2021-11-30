@@ -1,3 +1,11 @@
+<div class="conatiner">
+  <!-- Enter Text : <input type="text" #message>
+  <button (click)="sendMessage(message)">Send Message</button> -->
+  {{message}}
+</div>
+
+
+
 <div class="conatiner" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
   (scrolled)="onScroll()">
   <h1>list the most starred Github repos </h1>

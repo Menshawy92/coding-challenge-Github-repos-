@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ItemComponent,
-  ],
+      TestComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
